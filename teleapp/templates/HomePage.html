@@ -1,0 +1,48 @@
+{%extends "layout.html"%}
+
+{%block content%}
+   <h1>
+       Fault Log
+   </h1>
+   <div>
+       <table border="2">
+           <tr>
+               <th> BTS Name</th>
+               <th> No Of TSP</th>
+               <th> Reason </th>
+               <th> Incharge </th>
+               <th> profile picture</th>
+               <th> Action </th>
+               <th> Hr No</th>
+               <th> Delete</th>
+           </tr>
+           {% for post in posts.items %}
+            <tr>
+                <td> {{post.btsname}}</td>
+                <td> {{post.nb_of_tsps }}</td>
+                <td> {{post.reason}}</td>
+                <td  scope="row"> <a  href="{{url_for('user_post_view',userid=post.incharge.id)}}" >{{post.incharge.name }}</a></td>
+                <td> <img src="{{url_for('static',filename='profile_pics/'+ post.incharge.profile_picture)}}" width="50" height="50" class="rounded-circle" alt="profile_pics"></td>
+                <td>
+                    <a href="{{url_for('update_post',post_id=post.id)}}" > Update</a>
+                </td>
+                <td> {{post.incharge.hr_no }}</td>
+                <td><a href="{{ url_for('delete_post' , post_id = post.id) }}"> Delete</a> </td>
+            </tr>
+           {% endfor  %}
+       </table>
+       {% for num_page in posts.iter_pages(left_edge=1,right_edge=2,left_current=1,right_current=2) %}
+            {% if num_page %}
+                {% if num_page==posts.page %}
+                        <a href="{{url_for('home',page=num_page)}}" class="btn btn-info" >{{num_page}}</a>
+                {%else %}
+                         <a href="{{url_for('home',page=num_page)}}" class="btn btn-outline-info" >{{num_page}}</a>
+                {%endif%}
+            {% else %}
+                ...
+            {%endif%}
+       {% endfor %}
+
+   </div>
+
+{%endblock%}

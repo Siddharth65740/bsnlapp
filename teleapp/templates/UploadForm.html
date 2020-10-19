@@ -1,0 +1,72 @@
+{% extends "layout.html"%}
+
+{%block content%}
+<p></p>
+    <div class="container-section">
+    <form style="border : 1px solid #000;padding : 5px;border-color: red" method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag()}}
+        <fieldset class="form-group">
+            <div class="form-group">
+                <legend class="border-bottom mb-4" > Upload Document </legend>
+            </div>
+
+<!-- Description-->
+               <div class="form-group">
+                   {{ form.desc.label(class="form-control-label") }}
+                   {% if form.desc.errors %}
+                      {{ form.desc(class="form-control form-control-sm is-invalid") }}
+                         {% for error in form.pocnt.errors %}
+                         <div class="invalid-feedback"  >
+                         {{ error }}
+                         </div>
+                         {% endfor %}
+                  {%else%}
+                      {{ form.desc(class="form-control form-control-sm") }}
+                  {%endif %}
+               </div>
+
+<!-- Upload Letter -->
+               <div class="form-group">
+                   {{ form.docu.label(class="form-control-label") }}
+                   {% if form.docu.errors %}
+                      {{ form.docu(class="form-control form-control-sm is-invalid") }}
+                         {% for error in form.docu.errors %}
+                         <div class="invalid-feedback"  >
+                         {{ error }}
+                         </div>
+                         {% endfor %}
+                  {%else%}
+                      {{ form.docu(class="form-control form-control-sm") }}
+                  {%endif %}
+               </div>
+<!-- Upload Date -->
+               <div class="form-group">
+                   {{ form.uploaddt.label(class="form-control-label") }}
+                   {% if form.uploaddt.errors %}
+                      {{ form.uploaddt(class="form-control form-control-sm is-invalid") }}
+                         {% for error in form.uploaddt.errors %}
+                         <div class="invalid-feedback"  >
+                         {{ error }}
+                         </div>
+                         {% endfor %}
+                  {%else%}
+                      {{ form.uploaddt(class="form-control form-control-sm") }}
+                  {%endif %}
+               </div>
+
+
+
+            </fieldset>
+            <div class="form-group">
+
+                    {{ form.submit(class="btn btn-primary") }}
+
+            </div>
+        </fieldset>
+
+    </form>
+    </div>
+
+
+{%endblock%}
+

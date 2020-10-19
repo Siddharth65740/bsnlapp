@@ -1,0 +1,35 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+   <h1>
+       Blog details
+   </h1>
+   <div>
+      <table id="example" class="display" style="width:100%" >
+           <thead>
+         <tr>
+               <th> BTS Name</th>
+               <th> No Of TSP</th>
+               <th> Reason </th>
+
+           </tr>
+           </thead>
+           <tbody>
+           {% for post in posts %}
+            <tr>
+                <td> {{ post.btsname}}</td>
+                <td> {{post.nb_of_tsps }}</td>
+                <td> {{post.reason}}</td>
+
+            </tr>
+           {% endfor  %}
+           </tbody>
+
+       </table>
+       <a class="btn btn-primary" href="{{url_for('send_email',id=userid)}}" role="button">Send Mail</a>
+       <a class="btn btn-primary" href="{{url_for('send_sms',id=userid)}}" role="button">Send SMS</a>
+   </div>
+
+
+{%endblock%}

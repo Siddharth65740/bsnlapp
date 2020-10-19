@@ -1,0 +1,33 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+   <h1>
+       View Letters
+   </h1>
+   <div>
+      <table id="table_id" class="display" style="width:100%" >
+           <thead>
+         <tr>
+               <th> Description</th>
+               <th> Upload Date</th>
+               <th> View </th>
+
+           </tr>
+           </thead>
+           <tbody>
+           {% for post in posts  %}
+            <tr>
+                 <td> {{ post.desc }}  </td>
+                 <td> {{ post.uploaddt }}  </td>
+                <td> <a href="{{ url_for('static',filename='to_corp_letters/' + post.docu) }}"> Click Here</a> </td>
+            </tr>
+             {% endfor %}
+           </tbody>
+
+       </table>
+       <a class="btn btn-primary" href="{{url_for('send_email',id=userid)}}" role="button">Send Mail</a>
+   </div>
+
+
+{%endblock%}

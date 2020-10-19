@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: clicksend-client
+Version: 1.0.0
+Summary: ClickSend v3 API
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: support@clicksend.com
+License: UNKNOWN
+Description:      This is an official SDK for [ClickSend](https://clicksend.com)  Below you will find a current list of the available methods for clicksend.  *NOTE: You will need to create a free account to use the API. You can register [here](https://dashboard.clicksend.com/#/signup/step1/)..*   # noqa: E501
+            
+Keywords: Swagger,ClickSend v3 API
+Platform: UNKNOWN

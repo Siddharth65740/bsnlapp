@@ -1,0 +1,146 @@
+{%extends "proforma.html"%}
+{% block chartscript %}
+
+$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+        var s1 = [2, 6, 7, 10];
+        var ticks = ['a', 'b', 'c', 'd'];
+
+        plot1 = $.jqplot('chart1', [s1], {
+            // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+            animate: !$.jqplot.use_excanvas,
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true }
+            },
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: ticks
+                }
+            },
+            highlighter: { show: false }
+        });
+
+        $('#chart1').bind('jqplotDataClick',
+            function (ev, seriesIndex, pointIndex, data) {
+                $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+            }
+        );
+    });
+{% endblock %}
+
+{%block content%}
+
+<body>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Doughnut Chart</h4>
+                  </div>
+                  <div id="chart" class="card-body">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Pie Chart</h4>
+                  </div>
+                  <div  id="chart2" class="card-body">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Line Chart</h4>
+                  </div>
+                  <div  id="chart3"  class="card-body">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Bar Chart</h4>
+                  </div>
+                  <div  id="chart4"  class="card-body">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="settingSidebar">
+          <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
+          </a>
+          <div class="settingSidebar-body ps-container ps-theme-default">
+            <div class=" fade show active">
+              <div class="setting-panel-header">Setting Panel
+              </div>
+              <div class="p-15 border-bottom">
+                <h6 class="font-medium m-b-10">Select Layout</h6>
+                <div class="selectgroup layout-color w-50">
+                  <label class="selectgroup-item">
+                    <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
+                    <span class="selectgroup-button">Light</span>
+                  </label>
+                  <label class="selectgroup-item">
+                    <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
+                    <span class="selectgroup-button">Dark</span>
+                  </label>
+                </div>
+              </div>
+              <div class="p-15 border-bottom">
+                <h6 class="font-medium m-b-10">Sidebar Color</h6>
+                <div class="selectgroup selectgroup-pills sidebar-color">
+                  <label class="selectgroup-item">
+                    <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
+                    <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                      data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
+                  </label>
+                  <label class="selectgroup-item">
+                    <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar" checked>
+                    <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                      data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  <!-- General JS Scripts -->
+
+  <script src="{{ url_for('static', filename='assets/js/app.min.js')}}"></script>
+  <!-- JS Libraies -->
+  <script src="{{ url_for('static', filename='assets/bundles/chartjs/chart.min.js')}}"></script>
+  <!-- Page Specific JS File -->
+  <script src="{{ url_for('static', filename='assets/js/page/chart-chartjs.js')}}"></script>
+  <!-- Template JS File -->
+  <script src="{{ url_for('static', filename='assets/js/scripts.js')}}"></script>
+  <!-- Custom JS File -->
+  <script src="{{ url_for('static', filename='assets/js/custom.js')}}"></script>
+</body>
+
+
+<!-- chart-chartjs.html  21 Nov 2019 03:59:03 GMT -->
+</html>
+
+{%endblock%}

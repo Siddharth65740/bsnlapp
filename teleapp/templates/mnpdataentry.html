@@ -1,0 +1,78 @@
+{% extends "layout.html"%}
+
+{%block content%}
+
+    <div class="container-section">
+        <p></p>
+
+    <form style="border : 1px solid #000;padding : 5px;border-color: red" method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag()}}
+        <fieldset class="form-group">
+            <div class="form-group">
+                <legend class="border-bottom mb-4" > MNP Data Entry  </legend>
+            </div>
+
+           <div class="form-row">
+           <div class="form-group col-md-6">
+                {{ form.pocnt.label(class="form-control-label") }}
+                   {% if form.pocnt.errors %}
+                      {{ form.pocnt(class="form-control form-control-sm is-invalid") }}
+                         {% for error in form.pocnt.errors %}
+                         <div class="invalid-feedback"  >
+                         {{ error }}
+                         </div>
+                         {% endfor %}
+                  {%else%}
+                      {{ form.pocnt(class="form-control form-control-sm") }}
+                  {%endif %}
+            </div>
+<!-- Pi Count-->
+
+               <div class="form-group col-md-6">
+                {{ form.picnt.label(class="form-control-label") }}
+                   {% if form.picnt.errors %}
+                      {{ form.picnt(class="form-control form-control-sm is-invalid") }}
+                         {% for error in form.picnt.errors %}
+                         <div class="invalid-feedback"  >
+                         {{ error }}
+                         </div>
+                         {% endfor %}
+                  {%else%}
+                      {{ form.picnt(class="form-control form-control-sm") }}
+                  {%endif %}
+            </div>
+            </div>
+
+<!-- Po/Pi Date-->
+
+                  <div class="form-row align-items-left">
+                      <div class="col-7">
+                   {{ form.popidt.label(class="form-control-label") }}
+                   {% if form.popidt.errors %}
+                      {{ form.popidt }}
+                         {% for error in form.popidt.errors %}
+                         <div class="invalid-feedback"  >
+                         {{ error }}
+                         </div>
+                         {% endfor %}
+                  {%else%}
+                      {{ form.popidt(class="datepicker") }}
+                  {%endif %}
+                  </div>
+                      </div>
+
+
+            </fieldset>
+            <div class="form-group">
+
+                   {{ form.submit(class="btn btn-primary") }}
+
+            </div>
+        </fieldset>
+
+    </form>
+    </div>
+
+
+{%endblock%}
+

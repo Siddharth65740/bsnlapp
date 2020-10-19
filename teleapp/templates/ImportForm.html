@@ -1,0 +1,42 @@
+{% extends "layout.html"%}
+
+{%block content%}
+    <div class="container-section">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag()}}
+        <fieldset class="form-group">
+            <div class="form-group">
+                <legend class="border-bottom mb-4" > Import CSV File </legend>
+            </div>
+
+
+<!-- Import CSV File -->
+               <div class="form-group">
+                   {{ form.docu.label(class="form-control-label") }}
+                   {% if form.docu.errors %}
+                      {{ form.docu(class="form-control form-control-sm is-invalid") }}
+                         {% for error in form.docu.errors %}
+                         <div class="invalid-feedback"  >
+                         {{ error }}
+                         </div>
+                         {% endfor %}
+                  {%else%}
+                      {{ form.docu(class="form-control form-control-sm") }}
+                  {%endif %}
+               </div>
+
+
+            </fieldset>
+            <div class="form-group">
+
+                   {{ form.submit(class="btn btn-outline-info") }}
+
+            </div>
+        </fieldset>
+
+    </form>
+    </div>
+
+
+{%endblock%}
+

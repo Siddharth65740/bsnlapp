@@ -1,0 +1,64 @@
+{%extends "proforma.html"%}
+{% block datatablescript %}
+  $(document).ready(function() {
+      $('#tableExport').dataTable({
+            "bDestroy": true
+             }).fnDestroy();
+      $('#tableExport').DataTable({
+                         "ajax": {
+                        "url": "/fault_list",
+                        "dataType": "json"
+                },
+                 columns: [
+                            { data: 'btsname' },
+                            { data: 'nb_of_tsps'},
+                            { data: 'reason' },
+                            { data: 'updatetime' }
+
+                          ],
+
+                          "dom" : 'Bfrtip',
+                          "buttons" : [ 'excel','pdf','csv','print' ]
+                  })
+
+        } );
+{% endblock %}
+
+{%block content%}
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Fault Log</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
+                        <thead>
+                          <tr>
+                            <th>BTSNAME</th>
+                            <th>NB OF TSPS</th>
+                            <th>REASON</th>
+                            <th>Update Time</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      </section>
+      </div>
+
+{%endblock%}
